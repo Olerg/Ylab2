@@ -7,19 +7,17 @@ if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) {
 <div class="news-list">
     <?php
     /** @var array $arResult */
-    foreach ($arResult['ITEMS'] as $item) {
-        $adress = CIBlockElement::GetByID($item['PROPERTIES']['ADRESS']['VALUE'])->GetNextElement()->GetProperties();
-        ?>
+    foreach ($arResult['ITEMS'] as $item) {?>
         <p class="news-item" id="">
-            ФИО клиента: <?= $item['PROPERTIES']['NAME']['VALUE'] ?>
+            <b>ФИО клиета:</b> <?= $item['PROPERTIES']['NAME']['VALUE']?>
+            (тел. <?= $item['PROPERTIES']['PHONE']['VALUE']?>)
         </p>
         <p class="news-item" id="">
-            Телефон: <?= $item['PROPERTIES']['PHONE']['VALUE'] ?>
+            <b>Адрес клиента:</b><br>
+            <?= $item['PROPERTY_ADDRESS_PROPERTY_CITY_VALUE']?><br>
+            <?= $item['PROPERTY_ADDRESS_PROPERTY_STREET_VALUE']?>
+            <?= $item['PROPERTY_ADDRESS_PROPERTY_HOUSE_VALUE']?> /
+            <?= $item['PROPERTY_ADDRESS_PROPERTY_FLAT_VALUE']?>
         </p>
-        <p class="news-item" id="">
-            Адрес: Город <?= $adress['CITY']['VALUE'] ?>, ул. <?= $adress['STREET']['VALUE'] ?>,
-            д. <?= $adress['HOUSE']['VALUE'] ?>, кв. <?= $adress['FLAT']['VALUE'] ?>
-        </p>
-        <br>
     <?php } ?>
 </div>
